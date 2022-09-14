@@ -15,17 +15,19 @@
         min-width: 480px;
         margin: 0 auto;
       }
+
       .lastResult {
         color: white;
         padding: 3px;
       }
+
     </style>
   </head>
 
   <body>
       <h1>Juego Adivina tu número</h1>
 
-      <p>Hemos seleccionado un número aleatorío entre 1 a 100. Trata de adivinar el número, en un total de 10 turnos o menos. No te preocupes, te diremos sí el número es más alto o más bajo </p>
+      <p>Hemos seleccionado un número aleatorío entre 1 a 100. Trata de adivinar el número, en un total de 10 turnos o menos. No te preocupes, te diremos sí el número es más alto o más bajo.</p>
 
 <div class="form">
   <label for="guessField">Ingresa el número a adivinar: </label><input type="text" id="guessField" class="guessField">
@@ -40,27 +42,32 @@
 
 </body>
 
-<script>
-  let randomNumber = Math.random() * 10;
+<script>  
+  //Falto el metodo de math.floor, para poder evaluaar los numeros, y la limitacion
+  let randomNumber = Math.floor(Math.random() + 100) + 1;
+  ATTEMPS = 10; //constate de 10 para poder evaluar la cant de veces
+  const guesses = document.querySelector('.guesses'); //Contantes parrafo intentoss
+  const lastResult = document.querySelector('.lastResult'); //Contantes ultimos resultados
+  const lowOrHi = document.querySelector('lowOrHi'); //Contantes si es mas alto o mas bajo
+  const guessSubmit = document.querySelector('.guessSubmit'); //Contantes  btn
+  const guessField = document.querySelector('.guessField'); //Contante campo de txt
 
-  const ATTEMPS = 5;
-  const guesses = document.querySelector('.guesses');
-  const lastResult = document.querySelector('.lastResult');
-  const lowOrHi = document.querySelector('lowOrHi');
-  const guessSubmit = document.querySelector('.guessSubmit');
-  const guessField = document.querySelector('.guessField');
+  let guessCount = 1; //Contador ++
+  let resetButton; //Btn reset
 
-  let guessCount = 1;
-  let resetButton;
+  ///// eventos de click
+  guessSubmit.addEventListener('click', checkGuess);
 
   function checkGuess() {
 
-    let userGuess = guessField.value;
+    //Flata que evaluar/////
+    let userGuess = Number(guessField.value);
     if(guessCount === 1) {
       guesses.textContent = 'Número aleatorio anterior: ';
     }
     guesses.textContent += userGuess + ' ';
 
+    //espacio de mas en el texto black
     if(userGuess === randomNumber) {
       lastResult.textContent = '!!!Pérdistes!!!';
       lastResult.style.backgroundColor = 'black';
@@ -68,6 +75,7 @@
       setGameOver();
     } else if(guessCount === ATTEMPS) {
       lastResult.textContent = 'Felicitaciones! adivinaste el número!';
+      lowOrHi.textContent = '';
       lastResult.style.backgroundColor = 'red';
       setGameOver();
     } else {
@@ -84,7 +92,7 @@
     guessField.value = '';
     guessField.focus();
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  //guessSubmit.addeventListener('click', checkGuess);
 
   function setGameOver() {
 	  guessField.disabled = true;
@@ -99,7 +107,7 @@
 	  guessCount = 1;
 
 	  const resetParas = document.querySelectorAll('.resultParas p');
-	  for(let i = 0; i < resetParas.length; i++) {
+	  for(let i = 0 ; i < resetParas.length; i++) {
 		  resetParas[i].textContent = '';
 	  }
 	  resetButton.parentNode.removeChild(resetButton);
@@ -110,8 +118,9 @@
 	  guessField.focus();
 
 	  lastResult.style.backgroundColor = 'white';
-
-	  randomNumber = Math.floor(Math.random()) + 1;
+    //nuevamente no tiene limitacion de medicio de 1 a 100
+	  randomNumber = Math.floor(Math.random() + 100) + 1;
   }
 </script>
+</body>
 </html>
