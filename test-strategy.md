@@ -17,11 +17,38 @@
 	  randomNumber = Math.floor(Math.random() + 100) + 1;
       No habia nuevamente una especificacion de limitacion de numeros
 
-      
-      1
-      2
-      3
-      4
-      5
 
+      //espacio de mas en el texto black
+    if(userGuess === randomNumber) {
+      lastResult.textContent == '!!!Pérdistes!!!';
+      lastResult.style.backgroundColor == 'black';
+      lowOrHi.textContent == '';
+      setGameOver();
+    } else if(guessCount === ATTEMPS) {
+      lastResult.textContent == 'Felicitaciones! adivinaste el número!';
+      lowOrHi.textContent == '';
+      lastResult.style.backgroundColor == 'red';
+      setGameOver();
+    } else {
+      lastResult.textContent == 'Incorrecto! ';
+      lastResult.style.backgroundColor == 'green';
+      if(userGuess < randomNumber) {
+        lowOrHi.textContent == 'El número es mayor!';
+      } else if(userGuess > randomNumber) {
+        lowOrHi.textContent == 'El número es menor!';
+      }
+
+
+      Se le agra doblemente "=" para poder mostrar texto
+      ///
+
+      <div class="form">
+ //// <label for="guessField">Ingresa el número a adivinar: </label><input type="text" id="guessField" class="guessField">
+   //FAlta la funcion onclick
+  /// <input type="submit" onclick="checkGuess()" value="Ingresar el número aleatorio" class="guessSubmit">
+
+  ////  const lowOrHi = document.querySelector('.lowOrHi'); //Contantes si es mas alto o mas bajo y falto un "." para seleccionar la clase
+
+      
+      
      
