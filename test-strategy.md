@@ -17,4 +17,11 @@
 	  randomNumber = Math.floor(Math.random() + 100) + 1;
       No habia nuevamente una especificacion de limitacion de numeros
 
+      
+      1
+      2
+      3
+      4
+      5
+
      
