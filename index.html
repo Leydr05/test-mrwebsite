@@ -45,9 +45,9 @@
 
 <script>  
   //Falto el metodo de math.floor, para poder evaluaar los numeros, y la limitacion
-  let randomNumber = Math.floor(Math.random() + 100) + 1;
-  ATTEMPS = 10; //constate de 10 para poder evaluar la cant de veces
-  const guesses = document.querySelector('.guesses'); //Contantes parrafo intentoss
+  let randomNumber = Math.floor(Math.random() * 100) + 1;  // Falta el operador de multiplicación para generar el número aleatorio correctamente
+  const ATTEMPTS = 10; //Falta la palabra clave  "const" antes de "ATTEMPTS" para declarar una constante y esta mal escrita "ATTEMPS"
+  const guesses = document.querySelector('.guesses'); //Contantes parrafo intentoss 
   const lastResult = document.querySelector('.lastResult'); //Contantes ultimos resultados
   const lowOrHi = document.querySelector('.lowOrHi'); //Contantes si es mas alto o mas bajo
   const guessSubmit = document.querySelector('.guessSubmit'); //Contantes  btn
@@ -57,43 +57,46 @@
   let resetButton; //Btn reset
 
   ///// eventos de click
-  guessSubmit.addEventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess); //codgio comentado
 
   function checkGuess() {
+    let userGuess = parseInt(guessField.value);
 
     //Flata que evaluar/////
+       
+    if (Number.isInteger(userGuess)) { // Validar si el usuario ingresa un número entero
     let userGuess = Number(guessField.value);
     if(guessCount === 1) {
-      guesses.textContent == 'Número aleatorio anterior: ';
+      guesses.textContent = 'Número aleatorio anterior: ';
     }
     guesses.textContent += userGuess + ' ';
 
     //espacio de mas en el texto black
-    if(userGuess === randomNumber) {
-      lastResult.textContent == '!!!Pérdistes!!!';
-      lastResult.style.backgroundColor == 'black';
+    if(userGuess == randomNumber) { 
+      lastResult.textContent = '!!!Pérdistes!!!'; 
+      lastResult.style.backgroundColor = 'black';
       lowOrHi.textContent = '';
       setGameOver();
-    } else if(guessCount === ATTEMPS) {
-      lastResult.textContent == 'Felicitaciones! adivinaste el número!';
+    } else if(guessCount === ATTEMPTS) { // MAl escrito ATTEMPTS
+      lastResult.textContent = 'Felicitaciones! adivinaste el número!';
       lowOrHi.textContent = '';
       lastResult.style.backgroundColor = 'red';
       setGameOver();
     } else {
-      lastResult.textContent == 'Incorrecto! ';
+      lastResult.textContent = 'Incorrecto! ';
       lastResult.style.backgroundColor = 'green';
       if(userGuess < randomNumber) {
-        lowOrHi.textContent == 'El número es mayor!';
+        lowOrHi.textContent = 'El número es mayor!';
       } else if(userGuess > randomNumber) {
-        lowOrHi.textContent == 'El número es menor!';
+        lowOrHi.textContent = 'El número es menor!';
       }
     }
 
-    guessCount++;
+    guessCount++; //Incrementa el contador de intentos
     guessField.value = '';
     guessField.focus();
   }
-  //guessSubmit.addeventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess); //Error en escritura en el metodo addEventListener
 
   function setGameOver() {
 	  guessField.disabled = true;
@@ -101,14 +104,14 @@
 	  resetButton = document.createElement('button');
 	  resetButton.textContent = 'Comienza un nuevo juego';
 	  document.body.appendChild(resetButton);
-	  resetButton.addeventListener('click', resetGame);
+	  resetButton.addEventListener('click', resetGame); //Error en escritura en el metodo addEventListener
   }
 
   function resetGame() {
-	  guessCount = 1;
+	  guessCount = 1; // Restablecer el contador de
 
     //contiene un "p" demas
-	  const resetParas = document.querySelectorAll('.resultParas');
+	  const resetParas = document.querySelectorAll('.resultParas p'); // Error: El selector debe ser '.resultParas p' para obtener los elementos de párrafo correctamente
 	  for(let i = 0 ; i < resetParas.length; i++) {
 		  resetParas[i].textContent = '';
 	  }
@@ -120,11 +123,11 @@
 	  guessField.focus();
 
 	  lastResult.style.backgroundColor = 'white';
-    //nuevamente no tiene limitacion de medicio de 1 a 100
+    //nuevamente no tiene limitacion de medicion de 1 a 100
 	  randomNumber = Math.floor(Math.random() * 100) + 1;
   }
 
-  //guardado....Pruebadsfdsa
+  //guardado....Prueba
 </script>
 </body>
 </html>
