@@ -34,19 +34,32 @@
   // al momento de ingresar los numeros estos son contados con un 0 y solamente se tiene 5 oportunidades
   //El Comenzar no lo hace de nuevo
   //  guesses.textContent == 'Número aleatorio anterior: '; Al no utilizar el operador de asignación (=) en lugar de comparación (==)
+
   // lastResult.textContent == '!!!Pérdistes!!!'; Al no utilizar el operador de asignación (=) en lugar de comparación (==)
+
   // lastResult.style.backgroundColor == 'black'; Al no utilizar el operador de asignación (=) en lugar de comparación (==)
+
   // lastResult.textContent == 'Felicitaciones! adivinaste el número!'; Al no utilizar el operador de asignación (=) en lugar de comparación (==)
+
   //lastResult.textContent == 'Incorrecto! '; El valor de asignacion que debe de ser "=" y no a como esta
+
   //lowOrHi.textContent == 'El número es mayor!'; El valor de asignacion que debe de ser "=" y no a como esta
+
   //lowOrHi.textContent == 'El número es menor!'; El valor de asignacion que debe de ser "=" y no a como esta
+  
   //   //guessSubmit.addeventListener('click', checkGuess); Codigo comentado, esto permite que el juego procese el intento del jugador cuando se envía el número a adivinar
+
   // resetButton.addeventListener('click', resetGame); // Utilizar no utilizar 'addEventListener' en lugar de 'addeventListener', solamente por una letra del metodo
+
   // guessSubmit.addeventListener('click', checkGuess); // el metodo addEventListener no esta bien escrito
+
   //   let randomNumber = Math.floor(Math.random() + 100) + 1;  // Falta el operador de multiplicación para generar el número aleatorio correctamente
+
   //cconst ATTEMPS = 10; //Falta la palabra clave  "const" antes de "ATTEMPTS" para declarar una constante y esta mal escrita "ATTEMPS"
+
   //  const resetParas = document.querySelectorAll('.resultParas'); // Error: El selector debe ser '.resultParas p' para obtener los elementos de párrafo correctamente
-  //
+  
+  //else if(guessCount === ATTEMPTS)  // MAl escrito ATTEMPTS
   //
   //
   //
